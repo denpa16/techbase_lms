@@ -1,0 +1,88 @@
+version: '3.8'
+
+x-app_environment: &app_environment
+  environment:
+    - DEBUG
+    - SECRET_KEY
+    - POSTGRES_PASSWORD
+    - POSTGRES_HOST
+    - POSTGRES_PORT
+    - POSTGRES_NAME
+    - POSTGRES_USER
+    - SITE_HOST
+    - EMAIL_HOST
+    - EMAIL_HOST_USER
+    - EMAIL_HOST_PASSWORD
+    - EMAIL_PORT
+    - EMAIL_USE_TLS
+    - SERVER_EMAIL
+    - SENTRY_DSN
+    - YND_ACCESS_KEY_ID
+    - YND_SECRET_ACCESS_KEY
+    - YND_STORAGE_BUCKET_NAME
+    - YND_STORAGE_ENDPOINT_URL
+
+
+services:
+  nginx:
+    volumes:
+      - nginx_cache:/var/lib/nginx/proxy_cache
+      - static:/var/www/static/:ro
+    build:
+      context: ./nginx
+    depends_on:
+      - backend
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - TLS_MODE
+      - HTPASSWD_NODE
+      - MONITORING_HTPASSWD
+      - HTPASSWD
+      - IMGPROXY_SITE_HOST
+
+  backend:
+    build:
+      context: ./backend
+    <<: *app_environment
+
+  db:
+    image: postgres:15.2-alpine
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD
+      - POSTGRES_PORT
+      - POSTGRES_NAME
+      - POSTGRES_USER
+
+  redis:
+    image: redis:6.2-alpine
+    volumes:
+      - redisdata:/data
+
+  celery:
+    build:
+      context: ./backend/
+    command: celery -A config worker -l info -c 1 -n celery@dats.com -Q celery
+    depends_on:
+      - db
+      - redis
+    <<: *app_environment
+
+  celery-beat:
+    build:
+      context: ./backend/
+    command: celery -A config worker -B
+    depends_on:
+      - db
+      - redis
+    <<: *app_environment
+
+
+volumes:
+  static:
+  redisdata:
+  postgresdata:
+  nginx_cache:
