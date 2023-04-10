@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "common.apps.CommonConfig",
     "users.apps.UserConfig",
     "common.drf_tracking.apps.RestFrameworkTrackingConfig",
+    "teachbase.apps.TeachBaseConfig",
+    "courses.apps.CoursesConfig",
 ]
 
 MIDDLEWARE = [
@@ -332,3 +334,7 @@ AWS_DEFAULT_ACL = None
 AWS_LOCATION = getenv("YND_LOCATION", "media")
 AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = False
+
+TEACHBASE_API_URL = getenv("TEACHBASE_API_URL")
+TEACHBASE_CLIENT_ID = getenv("TEACHBASE_CLIENT_ID")
+TEACHBASE_CLIENT_SECRET = getenv("TEACHBASE_CLIENT_ID")

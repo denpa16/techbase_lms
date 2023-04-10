@@ -21,6 +21,9 @@ x-app_environment: &app_environment
     - YND_SECRET_ACCESS_KEY
     - YND_STORAGE_BUCKET_NAME
     - YND_STORAGE_ENDPOINT_URL
+    - TEACHBASE_API_URL
+    - TEACHBASE_CLIENT_ID
+    - TEACHBASE_CLIENT_SECRET
 
 
 services:
