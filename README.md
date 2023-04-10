@@ -5,6 +5,7 @@
 в классе TeachbasePaths необходимо уточнить path для проверки токена. При необходимости - поменять его название 
 - Выполнить команду: docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
 - Документация к api будет доступна по ссылке: http://localhost/api/docs/
+- Запуск теста по сохранению курса из апи: docker-compose exec backend pytest --create-db
 
 
 ### Тестовое задание в компанию BigData
