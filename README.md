@@ -1,7 +1,8 @@
 # Teachbase LMS
 
 Локальная установка:
-- Прописать в файле .env данные для Teachbase клиента
+- Прописать в файле .env данные для Teachbase клиента: Важно! в файле backend/teachbase/services/teachbase_client.py
+в классе TeachbasePaths необходимо уточнить path для проверки токена. При необходимости - поменять его название 
 - Выполнить команду: docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
 - Документация к api будет доступна по ссылке: http://localhost/api/docs/
 
