@@ -1,3 +1,4 @@
+import datetime
 from rest_framework.serializers import (
     FileField,
     FloatField,
@@ -20,14 +21,13 @@ class AuthorInputSerializer(Serializer):
 
     """
 
-    ref_id = CharField(source="id")
     email = CharField()
     phone = CharField()
     name = CharField()
     last_name = CharField()
-    role = IntegerField(source="role_id")
+    role_id = IntegerField()
     auth_type = IntegerField()
-    last_activity = SerializerMethodField()
+    last_activity_at = IntegerField()
     is_active = BooleanField()
     created_at = DateTimeField()
     updated_at = DateTimeField()

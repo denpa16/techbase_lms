@@ -10,7 +10,7 @@ services:
 
 
   backend:
-    restart: unless-stopped
+    restart: always
     volumes:
       - ./backend/:/app/:cached
       - static:/app/static/:delegated

@@ -1,3 +1,4 @@
 from .coursetype_serializer import CourseTypeInputSerializer
 from .author_serializer import AuthorInputSerializer
 from .course_serializer import CourseInputSerializer
+from .owner_serializer import OwnerInputSerializer

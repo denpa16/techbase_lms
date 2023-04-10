@@ -7,11 +7,6 @@ class CourseType(models.Model):
 
     """
 
-    ref_id = models.CharField(
-        verbose_name="Внешний  ID",
-        max_length=255,
-        unique=True,
-    )
     name = models.CharField(
         verbose_name="Название",
         max_length=255,

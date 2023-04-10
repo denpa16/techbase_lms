@@ -9,11 +9,6 @@ class Course(models.Model):
 
     """
 
-    ref_id = models.CharField(
-        verbose_name="Внешний  ID",
-        max_length=255,
-        unique=True,
-    )
     name = models.CharField(
         verbose_name="Название",
         max_length=255,
@@ -48,8 +43,8 @@ class Course(models.Model):
         blank=True,
         null=True,
     )
-    last_activity = models.DateTimeField(
-        verbose_name="Дата последней активности",
+    last_activity = models.TextField(
+        verbose_name="Последняя активность",
         blank=True,
         null=True,
     )

@@ -42,7 +42,7 @@ class TeachbaseClient:
     client_secret = settings.TEACHBASE_CLIENT_SECRET
 
     def __init__(self):
-        self.access_token = self.get_access_token()
+        # self.access_token = self.get_access_token()
         self.headers = None
 
     def _request(

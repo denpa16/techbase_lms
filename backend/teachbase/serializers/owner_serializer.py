@@ -14,12 +14,10 @@ from rest_framework.serializers import (
 )
 
 
-class CourseTypeInputSerializer(Serializer):
+class OwnerInputSerializer(Serializer):
     """
-    Сериализтор входных данных типа курса
+    Сериализтор входных данных владельца
 
     """
 
     name = CharField()
-    created_at = DateTimeField()
-    updated_at = DateTimeField()

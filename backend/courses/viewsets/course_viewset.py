@@ -5,6 +5,7 @@ from courses.serializers import (
     CourseSerializer,
 )
 
+
 @extend_schema(tags=["Courses"])
 class CourseViewSet(ReadOnlyModelViewSet):
     """

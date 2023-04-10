@@ -10,13 +10,12 @@ class Author(models.Model):
 
     """
 
-    ref_id = models.CharField(
-        verbose_name="Внешний  ID",
-        max_length=255,
-        unique=True,
-    )
     name = models.CharField(
-        verbose_name="Название",
+        verbose_name="Имя",
+        max_length=255,
+    )
+    last_name = models.CharField(
+        verbose_name="Имя",
         max_length=255,
     )
     phone = PhoneNumberField(
@@ -29,7 +28,7 @@ class Author(models.Model):
         blank=True,
         null=True,
     )
-    role = models.PositiveIntegerField(
+    role_id = models.PositiveIntegerField(
         verbose_name="Роль",
         default=AuthorRole.ROLE_1,
     )
@@ -37,8 +36,8 @@ class Author(models.Model):
         verbose_name="Тип",
         default=AuthorType.TYPE_1,
     )
-    last_activity_at = models.DateTimeField(
-        verbose_name="Последняя активность",
+    last_activity_at = models.PositiveBigIntegerField(
+        verbose_name="Дата последней активности",
         blank=True,
         null=True,
     )
